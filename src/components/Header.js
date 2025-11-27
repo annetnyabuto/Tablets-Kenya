@@ -1,46 +1,65 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import { BsSearch } from 'react-icons/bs';
+import React from "react";
+import Navbar from "./Navbar";
 
-const Header = () => {
+const categories = [
+  { id: 1, name: "Android Tablets" },
+  { id: 2, name: "iPads" },
+  { id: 3, name: "Kids Tablets" },
+  { id: 4, name: "Drawing Tablets for Designers" },
+  { id: 5, name: "Refurbished Tablets" },
+];
+
+export default function Header() {
   return (
     <>
-      <header className='header-top-strip py-3'> {/*py means padding from top and bottom ps means padding from left and right*/}
-        <div className='container-xxl'> 
-            <div className='row'> 
-                <div className='col-6'> 
-                    <p className='text-white mb-0'> 
-                        Free Shipping over $100 & Free Returns</p>
-                </div>
-                <div className='col-6'>
-                    {/* text-end means text align right */}
-                    <p className='text-end'> 
-                        Hotline: <a href='tel: +1234567890'>+254712345678</a></p>
-                </div>
-            </div>
+      {/* Top Promo Bar */}
+      <div className="top-promo">
+        <div className="promo-inner">
+          <div>
+            Free delivery in Nairobi for orders over KES 5,000 • 12-month warranty on certified devices
+          </div>
+          <div className="promo-extra">Secure payments • Easy returns</div>
         </div>
-      </header>
-      <header className='header-upper py-3'>
-        <div className='container-xxl'>
-            <div className='row align items center'>
-                <div className='col-2'>
-                      <h3> 
-                        <Link to='/' className='text-white'>Tablets Kenya</Link>
-                      </h3>
-                </div>
-                <div className='col-5'>
-                    <div className="input-group">
-                        <input type="text" className="form-control" placeholder="Recipient’s username" aria-label="Recipient’s username" aria-describedby="basic-addon2" />
-                        <span className="input-group-text" id="basic-addon2"><BsSearch /></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </header>
+      </div>
 
+      {/* Main Header */}
+      <header className="site-header">
+        <div className="header-inner">
+
+          <div className="brand-nav">
+            {/* LEFT — Brand */}
+            <div className="brand">
+              <img src="/images/logo.png" alt="Tablets Kenya" className="brand-logo" />
+              <div className="brand-name">Tablets Kenya</div>
+            </div>
+
+            {/* CENTER — Navigation */}
+            <Navbar categories={categories} />
+          </div>
+
+          {/* RIGHT — Search & Actions */}
+          <div className="header-actions">
+            <div className="search-wrap">
+              <input 
+                type="search" 
+                placeholder="Search tablets, models, specs..." 
+                className="search-input" 
+              />
+              <button className="search-btn">Search</button>
+            </div>
+
+            <div className="small-actions">
+              <button className="wishlist-btn">Wishlist</button>
+
+              <a href="#cart" className="cart-btn">
+                <img src="/images/download.png" alt="Cart" className="cart-icon" />
+                <span className="cart-total">KES 0</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </header>
     </>
-
-  )
+  );
 }
-
-export default Header
